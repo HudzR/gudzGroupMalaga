@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gudz Group — Premium Home & Office Services in Málaga</title>
+<meta name="description" content="Gudz Group: instalación de cocinas, montaje de muebles, instalación de televisores, aire acondicionado y servicio de limpieza en Málaga, Marbella y Costa del Sol. Premium home and office services.">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ============ DESIGN TOKENS ============ */
+  /* Deep petrol-navy base (not flat black/grey) + warm ivory text + teal accent.
+     Swap these six values to re-skin any future Gudz Group micro-site. */
+  :root{
+    --bg: #14171C;
+    --bg-panel: #1E2229;
+    --line: #313742;
+    --line-soft: #22262D;
+    --text: #E2E8F0;
+    --text-dim: #A8B0BC;
+    --text-faint: #6E7683;
+    --accent: #A6C4FF;
+    --accent-strong: #D6E3FF;
+    --accent-deep: #4A6FA8;
+    --accent-warm: #D9886A;
+
+    /* ---- IMAGE PATHS — edit here to swap any photo site-wide ---- */
+    /* All images live in the /images folder next to this HTML file. */
+    --img-hero:        url('images/hero-kitchen.jpg');
+    --img-install:     url('images/services-bg-install.jpg');
+    --img-climate:     url('images/services-bg-climate.jpg');
+    --img-cleaning:    url('images/services-bg-cleaning.jpg');
+    --img-security:    url('images/services-bg-security.jpg');
+    --img-contact:     url('images/contact-bg.jpg');
+
+    --font-serif: 'Bodoni Moda', serif;
+    --font-sans: 'IBM Plex Sans', sans-serif;
+
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 40px;
+    --space-5: 64px;
+    --space-6: 96px;
+    --space-7: 144px;
+
+    --max-w: 1180px;
+
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color: inherit; }
+  ::selection{ background: var(--accent-deep); color: var(--accent-strong); }
+
+  :focus-visible{
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  h1,h2{
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: 0.002em;
+    margin: 0;
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(20,23,28,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+  .logo{
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo span{ color: var(--accent); }
+
+  nav.primary-nav{
+    display:flex;
+    align-items:center;
+    gap: var(--space-4);
+  }
+  nav.primary-nav a.nav-link{
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    text-decoration:none;
+    transition: color .25s var(--ease);
+  }
+  nav.primary-nav a.nav-link:hover{ color: var(--text); }
+
+  .lang-toggle{
+    display:flex;
+    align-items:center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 6px;
+  }
+  .lang-toggle button{
+    background:none;
+    border:none;
+    color: var(--text-faint);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    cursor:pointer;
+    transition: color .2s var(--ease), background .2s var(--ease);
+  }
+  .lang-toggle button.is-active{
+    color: var(--bg);
+    background: var(--accent);
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    position: relative;
+    padding-top: clamp(var(--space-6), 12vw, var(--space-7));
+    padding-bottom: clamp(var(--space-6), 10vw, var(--space-7));
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Background layer: ships as a gradient wash so the page works with no
+     assets. To use your own photo, replace the `background` line inside
+     .hero-bg with:
+       background-image: url('your-photo.jpg');
+       background-size: cover;
+       background-position: center;
+     A moody, low-saturation shot (an interior, a coastline at dusk, a
+     detail of tools or materials) will sit best under the dark overlay. */
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(ellipse 70% 60% at 78% 20%, rgba(166,196,255,0.12), transparent 60%),
+      var(--img-hero);
+    background-size: cover;
+    background-position: center 60%;
+  }
+  /* Dark overlay sits above the image/gradient so text stays legible
+     whatever photo is dropped in. Raise the last alpha value if a busy
+     photo is used. */
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+      linear-gradient(to bottom, transparent 75%, var(--bg) 100%),
+      linear-gradient(100deg, rgba(20,23,28,0.80) 0%, rgba(20,23,28,0.60) 45%, rgba(20,23,28,0.30) 100%);
+  }
+
+  .hero-schema{
+    position:absolute;
+    top: 0;
+    right: 0;
+    width: min(42vw, 560px);
+    height: 100%;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero-schema path, .hero-schema circle, .hero-schema line{
+    stroke: var(--accent-deep);
+    stroke-width: 1;
+    fill:none;
+  }
+  .hero-schema .draw{
+    stroke-dasharray: 900;
+    stroke-dashoffset: 900;
+    animation: draw 2.4s var(--ease) forwards .3s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+
+  .hero-content{
+    position: relative;
+    max-width: 760px;
+  }
+  .hero-eyebrow{
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    margin-bottom: var(--space-3);
+    font-weight: 400;
+  }
+  .hero h1{
+    font-size: clamp(2.6rem, 5.4vw, 4.4rem);
+    line-height: 1.08;
+    color: var(--accent-strong);
+    opacity:0;
+  }
+  .hero h1 .reveal-line{
+    display:block;
+    overflow:hidden;
+  }
+  .hero h1 .reveal-line span{
+    display:block;
+    transform: translateY(110%);
+    animation: rise .9s var(--ease) forwards;
+  }
+  .hero.is-ready h1{ opacity:1; }
+  .hero.is-ready h1 .reveal-line:nth-child(1) span{ animation-delay: .15s; }
+  .hero.is-ready h1 .reveal-line:nth-child(2) span{ animation-delay: .28s; }
+  @keyframes rise{ to{ transform: translateY(0); } }
+
+  .hero-sub{
+    margin-top: var(--space-4);
+    max-width: 480px;
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+  .hero-cta-row{
+    margin-top: var(--space-5);
+    display:flex;
+    align-items:center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    text-decoration:none;
+    padding: 14px 28px;
+    border: 1px solid var(--accent);
+    color: var(--accent-strong);
+    border-radius: 2px;
+    background: transparent;
+    transition: background .3s var(--ease), color .3s var(--ease);
+  }
+  .btn:hover{
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .link-quiet{
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color .25s var(--ease), border-color .25s var(--ease);
+  }
+  .link-quiet:hover{ color: var(--text); border-color: var(--text-dim); }
+
+  /* ============ SECTION SHARED ============ */
+  section{ padding-top: var(--space-6); padding-bottom: var(--space-6); }
+  .section-head{
+    margin-bottom: var(--space-5);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: var(--space-4);
+  }
+  .section-head h2{
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--accent-strong);
+  }
+
+  /* ============ SERVICES — per-category background photos ============ */
+  /* One background photo per category, crossfaded via opacity when the
+     active tab changes (see JS). File paths are set once, at the top,
+     in the --img-* variables inside :root — edit them there, not here.
+     Drop four images into the /images folder next to this HTML file:
+       images/services-bg-install.jpg   (furniture assembly)
+       images/services-bg-climate.jpg
+       images/services-bg-cleaning.jpg
+       images/services-bg-security.jpg
+     Same moody, low-saturation, dark-toned treatment as the hero photo.
+     Recommended size: 2400×1350px (16:9), JPG, ~200–400KB compressed. */
+  #services{
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .services-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+  }
+  .service-bg-layer{
+    position:absolute;
+    inset:0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.1s var(--ease);
+  }
+  .service-bg-layer.is-active{ opacity: 1; }
+  .service-bg-layer[data-bg-cat="install"]{ background-image: var(--img-install); }
+  .service-bg-layer[data-bg-cat="climate"]{ background-image: var(--img-climate); }
+  .service-bg-layer[data-bg-cat="cleaning"]{ background-image: var(--img-cleaning); }
+  .service-bg-layer[data-bg-cat="security"]{ background-image: var(--img-security); }
+  .services-overlay{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+      linear-gradient(to bottom, var(--bg) 0%, transparent 18%, transparent 78%, var(--bg) 100%),
+      radial-gradient(ellipse 60% 50% at 85% 10%, rgba(217,136,106,0.10), transparent 60%),
+      linear-gradient(100deg, rgba(20,23,28,0.80) 0%, rgba(20,23,28,0.60) 45%, rgba(20,23,28,0.30) 100%);
+  }
+
+  /* ============ SERVICES — category tabs ============ */
+  .services-tabs{
+    display:flex;
+    gap: var(--space-5);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: var(--space-4);
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .services-tabs::-webkit-scrollbar{ display:none; }
+  .tab-btn{
+    position: relative;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-faint);
+    padding: 0 0 var(--space-2) 0;
+    cursor: pointer;
+    transition: color .25s var(--ease);
+  }
+  .tab-btn::after{
+    content:"";
+    position: absolute;
+    left:0; right:0; bottom:-1px;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .35s var(--ease);
+  }
+  .tab-btn:hover{ color: var(--text-dim); }
+  .tab-btn.is-active{ color: var(--accent-strong); }
+  .tab-btn.is-active::after{ transform: scaleX(1); }
+
+  .tab-panel{ display:none; }
+  .tab-panel.is-active{
+    display:block;
+    animation: fadeIn .4s var(--ease);
+  }
+  @keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
+
+  /* ============ SERVICES — editorial index list, no cards/icons ============ */
+  .services-index{
+    border-top: 1px solid var(--line);
+  }
+  .service-row{
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(200px, 260px) 1fr;
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--line);
+    transition: background .3s var(--ease);
+  }
+  .service-row::before{
+    content:"";
+    position:absolute;
+    left: calc(var(--space-4) * -1);
+    top:0;
+    width: 2px;
+    height: 0;
+    background: var(--accent);
+    transition: height .35s var(--ease);
+  }
+  .service-row:hover{ background: var(--bg-panel); }
+  .service-row:hover::before{ height: 100%; }
+  .service-title{
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--accent-strong);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .service-desc{
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    max-width: 62ch;
+  }
+  .service-desc .kw{
+    color: var(--text);
+  }
+  @media (max-width: 720px){
+    .service-row{ grid-template-columns: 1fr; gap: 6px; }
+  }
+  .services-note{
+    margin-top: var(--space-4);
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    max-width: 560px;
+  }
+
+  /* ============ CONTACT ============ */
+  #contact{
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .contact-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background-image: var(--img-contact);
+    background-size: cover;
+    background-position: center;
+  }
+  .contact-overlay{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+      linear-gradient(to bottom, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
+      linear-gradient(100deg, rgba(20,23,28,0.82) 0%, rgba(20,23,28,0.62) 45%, rgba(20,23,28,0.34) 100%);
+  }
+  .contact-panel{
+    position: relative;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    padding: var(--space-5);
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-6);
+  }
+  .contact-intro h2{
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--accent-strong);
+    max-width: 420px;
+  }
+  .contact-intro p{
+    margin-top: var(--space-3);
+    color: var(--text-dim);
+    max-width: 420px;
+    font-size: 1rem;
+  }
+  .contact-intro .btn{ margin-top: var(--space-4); }
+
+  .contact-list{
+    list-style:none;
+    margin:0; padding:0;
+    display:flex;
+    flex-direction: column;
+  }
+  .contact-list li{
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--line);
+    display:flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+  .contact-list li:last-child{ border-bottom: 1px solid var(--line); }
+  .contact-icon{
+    width: 20px; height:20px;
+    color: var(--accent);
+    flex-shrink:0;
+    margin-top: 2px;
+  }
+  .contact-icon svg{ width:100%; height:100%; }
+  .contact-icon svg *{ stroke:currentColor; fill:none; stroke-width:1.3; stroke-linecap:round; stroke-linejoin:round; }
+  .contact-label{
+    display:block;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    margin-bottom: 3px;
+  }
+  .contact-value{
+    font-size: 0.98rem;
+    color: var(--text);
+    text-decoration:none;
+  }
+  .contact-value.is-link:hover{ color: var(--accent); }
+
+  @media (max-width: 860px){
+    .contact-panel{ grid-template-columns: 1fr; padding: var(--space-4); }
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top: 1px solid var(--line-soft);
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+  .footer-inner{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+  }
+  .footer-inner a{ color: var(--text-faint); text-decoration:none; }
+  .footer-inner a:hover{ color: var(--text-dim); }
+
+  .footer-legal{
+    display:flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  .footer-legal button{
+    background:none;
+    border:none;
+    padding:0;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor:pointer;
+    transition: color .2s var(--ease);
+  }
+  .footer-legal button:hover{ color: var(--text-dim); }
+
+  /* ============ LEGAL MODAL ============ */
+  .legal-modal{
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding: var(--space-3);
+  }
+  .legal-modal.is-open{ display:flex; }
+  .legal-modal-backdrop{
+    position:absolute;
+    inset:0;
+    background: rgba(10,12,15,0.72);
+    backdrop-filter: blur(4px);
+  }
+  .legal-modal-panel{
+    position:relative;
+    z-index:1;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    max-width: 720px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: var(--space-4);
+  }
+  .legal-modal-panel h2{
+    font-size: 1.3rem;
+    color: var(--accent-strong);
+    margin-bottom: var(--space-3);
+    padding-right: var(--space-5);
+  }
+  .legal-modal-panel h3{
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text);
+    margin: var(--space-3) 0 var(--space-1);
+  }
+  .legal-modal-panel p, .legal-modal-panel li{
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+  .legal-modal-panel ul{ padding-left: 1.1em; margin: 0 0 var(--space-2); }
+  .legal-modal-panel .legal-placeholder{
+    color: var(--accent-warm);
+  }
+  .legal-modal-close{
+    position:absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    background:none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    width: 32px;
+    height: 32px;
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1;
+    cursor:pointer;
+    transition: color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .legal-modal-close:hover{ color: var(--text); border-color: var(--accent); }
+
+  /* language block toggling (used where EN/ES need different sentence
+     structure, e.g. the services paragraph) */
+  .i18n-en, .i18n-es{ }
+
+  @media (max-width: 640px){
+    .wrap{ padding-left: var(--space-3); padding-right: var(--space-3); }
+    nav.primary-nav a.nav-link{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="#" class="logo">GUDZ <span>GROUP</span></a>
+    <nav class="primary-nav">
+      <a class="nav-link" href="#services" data-en="Services" data-es="Servicios">Services</a>
+      <a class="nav-link" href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" class="is-active">EN</button>
+        <button type="button" data-set-lang="es">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <svg class="hero-schema" viewBox="0 0 500 700" aria-hidden="true">
+      <line class="draw" x1="120" y1="40" x2="120" y2="660"/>
+      <line class="draw" x1="120" y1="120" x2="440" y2="120"/>
+      <line class="draw" x1="120" y1="300" x2="380" y2="300"/>
+      <line class="draw" x1="120" y1="480" x2="420" y2="480"/>
+      <circle class="draw" cx="120" cy="120" r="4"/>
+      <circle class="draw" cx="120" cy="300" r="4"/>
+      <circle class="draw" cx="120" cy="480" r="4"/>
+      <circle class="draw" cx="380" cy="300" r="26"/>
+    </svg>
+    <div class="wrap hero-content">
+      <p class="hero-eyebrow" data-en="Málaga · Marbella · Costa del Sol" data-es="Málaga · Marbella · Costa del Sol">Málaga · Marbella · Costa del Sol</p>
+      <h1>
+        <span class="reveal-line"><span data-en="Home and office" data-es="Servicios para el hogar">Home and office</span></span>
+        <span class="reveal-line"><span data-en="services, done with precision." data-es="y la oficina, con precisión.">services, done with precision.</span></span>
+      </h1>
+      <p class="hero-sub" data-en="Gudz Group brings skilled, reliable craftsmanship to residents, landlords and businesses across the Costa del Sol — one call for everything your property needs." data-es="Gudz Group ofrece un servicio experto y de confianza para particulares, propietarios y empresas en toda la Costa del Sol: una sola llamada para todo lo que necesita su propiedad.">
+        Gudz Group brings skilled, reliable craftsmanship to residents, landlords and businesses across the Costa del Sol — one call for everything your property needs.
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn" href="#contact" data-en="Get in touch" data-es="Contáctanos">Get in touch</a>
+        <a class="link-quiet" href="#services" data-en="View all services" data-es="Ver todos los servicios">View all services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES — editorial index list, no cards/icons ============ -->
+  <section id="services">
+    <div class="services-bg" aria-hidden="true">
+      <div class="service-bg-layer is-active" data-bg-cat="install"></div>
+      <div class="service-bg-layer" data-bg-cat="climate"></div>
+      <div class="service-bg-layer" data-bg-cat="cleaning"></div>
+      <div class="service-bg-layer" data-bg-cat="security"></div>
+    </div>
+    <div class="services-overlay" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-en="What we do" data-es="Qué hacemos">What we do</h2>
+      </div>
+
+      <div class="services-tabs" role="tablist" id="services-tabs"></div>
+      <div id="services-panels"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="contact-bg" aria-hidden="true"></div>
+    <div class="contact-overlay" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="contact-panel">
+        <div class="contact-intro">
+          <h2 data-en="Let's talk" data-es="Hablemos">Let's talk</h2>
+          <p data-en="Tell us what your space needs. We reply within one business day and can usually schedule within the week." data-es="Cuéntenos qué necesita su espacio. Respondemos en un día laborable y normalmente podemos agendar en la misma semana.">Tell us what your space needs. We reply within one business day and can usually schedule within the week.</p>
+          <a class="btn" href="https://wa.me/34614191396" target="_blank" rel="noopener" data-en="Message us on WhatsApp" data-es="Escríbenos por WhatsApp">Message us on WhatsApp</a>
+        </div>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1a10 10 0 0 0 6 6l1-2 5 2v2c0 1-1 2-2 2C10 19 4 13 4 5z"/></svg></span>
+            <div>
+              <span class="contact-label" data-en="Phone" data-es="Teléfono">Phone</span>
+              <a class="contact-value is-link" href="tel:+34614191396">+34 614 19 13 96</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M3 6l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="1"/></svg></span>
+            <div>
+              <span class="contact-label" data-en="Email" data-es="Correo">Email</span>
+              <a class="contact-value is-link" href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
+            <div>
+              <span class="contact-label" data-en="Service area" data-es="Zona de servicio">Service area</span>
+              <span class="contact-value" data-en="Málaga, Marbella & Costa del Sol" data-es="Málaga, Marbella y Costa del Sol">Málaga, Marbella & Costa del Sol</span>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M9 20l-6-3V4l6 3m0 13l6-3m-6 3V7m6 10l6 3V6l-6-3m0 14V4"/></svg></span>
+            <div>
+              <span class="contact-label" data-en="Find us" data-es="Encuéntranos">Find us</span>
+              <a class="contact-value is-link" href="https://maps.app.goo.gl/GAYyLuXpnrR1XmG18" target="_blank" rel="noopener" data-en="View on Google Maps" data-es="Ver en Google Maps">View on Google Maps</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span data-en="© 2026 Gudz Group. Málaga, Spain." data-es="© 2026 Gudz Group. Málaga, España.">© 2026 Gudz Group. Málaga, Spain.</span>
+    <nav class="footer-legal">
+      <button type="button" data-legal="aviso" data-en="Legal Notice" data-es="Aviso legal">Legal Notice</button>
+      <button type="button" data-legal="privacidad" data-en="Privacy Policy" data-es="Política de privacidad">Privacy Policy</button>
+      <button type="button" data-legal="cookies" data-en="Cookie Policy" data-es="Política de cookies">Cookie Policy</button>
+    </nav>
+    <a href="tel:+34614191396">+34 614 19 13 96</a>
+  </div>
+</footer>
+
+<div class="legal-modal" id="legal-modal" aria-hidden="true">
+  <div class="legal-modal-backdrop" data-legal-close></div>
+  <div class="legal-modal-panel" role="dialog" aria-modal="true">
+    <button type="button" class="legal-modal-close" data-legal-close aria-label="Close">✕</button>
+    <div id="legal-modal-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+
+  /* ---------- SERVICES DATA, GROUPED BY CATEGORY ---------- */
+  var categories = [
+    {
+      id: 'install',
+      titleEn: 'Installation', titleEs: 'Instalación',
+      items: [
+        { titleEn:"Kitchen installation", titleEs:"Instalación de cocinas",
+          descEn:'Full kitchen installation — cabinets, countertops and fittings — set to a precise, lasting finish.',
+          descEs:'Instalación completa de cocinas: armarios, encimeras y acabados, con un resultado preciso y duradero.' },
+        { titleEn:"TV wall mounting", titleEs:"Instalación de televisores",
+          descEn:'Secure TV wall mounting with hidden cabling, for any wall and any screen size.',
+          descEs:'Instalación de televisores en pared con cableado oculto, en cualquier tipo de pared.' },
+        { titleEn:"Furniture assembly", titleEs:"Montaje de muebles",
+          descEn:'Careful furniture assembly and installation — flat-pack, freestanding or built-in.',
+          descEs:'Montaje de muebles con cuidado: kits planos, piezas independientes o a medida.' },
+        { titleEn:"Rods, fans & fixtures", titleEs:"Cortineros, ventiladores y lámparas",
+          descEn:'Curtain rods, ceiling fans, mirrors, artwork and chandeliers, mounted safely and level.',
+          descEs:'Instalación de cortineros, ventiladores de techo, espejos, cuadros y lámparas, con nivel y firmeza.' },
+        { titleEn:"Shelving & storage", titleEs:"Instalación de estanterías",
+          descEn:'Shelving and storage systems installed level and secure, built around your space.',
+          descEs:'Instalación de estanterías y sistemas de almacenaje, firmes y adaptados a su espacio.' },
+        { titleEn:"Blinds & shutters", titleEs:"Instalación de persianas",
+          descEn:'Blinds and shutters fitted precisely, for privacy, shade and a clean sightline.',
+          descEs:'Instalación de persianas con precisión, para privacidad, sombra y un acabado limpio.' },
+        { titleEn:"Awning installation", titleEs:"Instalación de toldos",
+          descEn:'Awning installation for terraces and balconies, built to handle the Costa del Sol sun.',
+          descEs:'Instalación de toldos para terrazas y balcones, preparados para el sol de la Costa del Sol.' }
+      ]
+    },
+    {
+      id: 'climate',
+      titleEn: 'Climate & Appliances', titleEs: 'Clima y electrodomésticos',
+      items: [
+        { titleEn:"AC installation & cleaning", titleEs:"Instalación y limpieza de aire acondicionado",
+          descEn:'Air conditioning installation, servicing and deep cleaning, for consistent performance year-round.',
+          descEs:'Instalación, mantenimiento y limpieza profunda de aire acondicionado, todo el año.' },
+        { titleEn:"Appliance connection", titleEs:"Conexión de electrodomésticos",
+          descEn:'Safe connection and installation of household appliances, from ovens to washing machines.',
+          descEs:'Conexión e instalación segura de electrodomésticos, desde hornos hasta lavadoras.' }
+      ]
+    },
+    {
+      id: 'cleaning',
+      titleEn: 'Cleaning & Care', titleEs: 'Limpieza y mantenimiento',
+      items: [
+        { titleEn:"Cleaning services", titleEs:"Servicio de limpieza",
+          descEn:'Regular and one-off cleaning services for homes, offices and rental properties.',
+          descEs:'Servicio de limpieza puntual y periódico para viviendas, oficinas y alquileres.' },
+        { titleEn:"Small repairs", titleEs:"Pequeñas reparaciones",
+          descEn:'General handyman work and small repairs around the home or office, handled promptly.',
+          descEs:'Trabajos de mantenimiento y pequeñas reparaciones en el hogar o la oficina, resueltos con rapidez.' }
+      ]
+    },
+    {
+      id: 'security',
+      titleEn: 'Security & Smart Home', titleEs: 'Seguridad y smart home',
+      items: [
+        { titleEn:"Locksmith services", titleEs:"Servicios de cerrajería",
+          descEn:'Lock replacement and general locksmith work, for better security without the wait.',
+          descEs:'Cambio de cerraduras y servicios de cerrajería, para más seguridad sin esperas.' },
+        { titleEn:"Smart home setup", titleEs:"Instalación de dispositivos smart home",
+          descEn:'Smart locks, cameras and sensors installed and connected, ready to use from day one.',
+          descEs:'Instalación y configuración de cerraduras, cámaras y sensores inteligentes, listos desde el primer día.' },
+        { titleEn:"Childproofing", titleEs:"Seguridad infantil en el hogar",
+          descEn:'Childproofing for homes and offices — corner guards, cabinet locks and secured furniture.',
+          descEs:'Adaptación de hogares y oficinas para la seguridad infantil: esquineras, cierres y muebles fijados.' }
+      ]
+    }
+  ];
+
+  var tabsEl = document.getElementById('services-tabs');
+  var panelsEl = document.getElementById('services-panels');
+
+  categories.forEach(function(cat, i){
+    var tab = document.createElement('button');
+    tab.type = 'button';
+    tab.className = 'tab-btn' + (i === 0 ? ' is-active' : '');
+    tab.setAttribute('role','tab');
+    tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    tab.setAttribute('data-tab', cat.id);
+    tab.setAttribute('data-en', cat.titleEn);
+    tab.setAttribute('data-es', cat.titleEs);
+    tab.textContent = cat.titleEn;
+    tabsEl.appendChild(tab);
+
+    var panel = document.createElement('div');
+    panel.className = 'services-index tab-panel' + (i === 0 ? ' is-active' : '');
+    panel.setAttribute('role','tabpanel');
+    panel.setAttribute('data-tab-panel', cat.id);
+
+    cat.items.forEach(function(s){
+      var row = document.createElement('div');
+      row.className = 'service-row';
+      row.innerHTML =
+        '<h3 class="service-title" data-en="' + s.titleEn + '" data-es="' + s.titleEs + '">' + s.titleEn + '</h3>' +
+        '<p class="service-desc" data-en="' + s.descEn + '" data-es="' + s.descEs + '">' + s.descEn + '</p>';
+      panel.appendChild(row);
+    });
+    panelsEl.appendChild(panel);
+  });
+
+  tabsEl.addEventListener('click', function(e){
+    var btn = e.target.closest('.tab-btn');
+    if(!btn) return;
+    var id = btn.getAttribute('data-tab');
+    tabsEl.querySelectorAll('.tab-btn').forEach(function(b){
+      var active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panelsEl.querySelectorAll('.tab-panel').forEach(function(p){
+      p.classList.toggle('is-active', p.getAttribute('data-tab-panel') === id);
+    });
+    document.querySelectorAll('.service-bg-layer').forEach(function(l){
+      l.classList.toggle('is-active', l.getAttribute('data-bg-cat') === id);
+    });
+  });
+
+  var buttons = document.querySelectorAll('[data-set-lang]');
+  var currentLang = 'en';
+
+  function setLang(lang){
+    currentLang = lang;
+    document.documentElement.setAttribute('lang', lang);
+
+    // simple word/phrase swaps
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var val = el.getAttribute('data-' + lang);
+      if(val !== null){ el.textContent = val; }
+    });
+
+    // full-block swaps (different sentence structure per language)
+    document.querySelectorAll('.i18n-en').forEach(function(el){
+      el.style.display = (lang === 'en') ? '' : 'none';
+    });
+    document.querySelectorAll('.i18n-es').forEach(function(el){
+      el.style.display = (lang === 'es') ? '' : 'none';
+    });
+
+    buttons.forEach(function(b){
+      b.classList.toggle('is-active', b.getAttribute('data-set-lang') === lang);
+    });
+
+    document.title = lang === 'es'
+      ? 'Gudz Group — Servicios premium para el hogar y la oficina en Málaga'
+      : 'Gudz Group — Premium Home & Office Services in Málaga';
+
+    if(openLegalKey){ renderLegal(openLegalKey); }
+  }
+
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-set-lang')); });
+  });
+
+  /* ---------- LEGAL TEXTS (LSSI-CE / RGPD-LOPDGDD) ----------
+     PLACEHOLDERS marked [...] must be replaced with the real company
+     data (legal name, NIF/CIF, registered address, mercantile registry
+     entry if applicable) before this site goes live. This copy covers
+     the minimum required under Spanish law (Ley 34/2002 LSSI-CE art.10,
+     RGPD and LOPDGDD): identification of the site owner, a privacy
+     policy, and a cookie policy. No non-essential cookies or trackers
+     are currently loaded by this site other than the Google Fonts
+     connection declared below; if analytics, ads, or an embedded map
+     are added later, a cookie-consent banner becomes mandatory and this
+     text must be updated accordingly. */
+  var legalTexts = {
+    aviso: {
+      en: '<h2>Legal Notice</h2>' +
+        '<p>In compliance with Article 10 of Spanish Law 34/2002 (LSSI-CE), the following information is provided about the owner of this website:</p>' +
+        '<ul>' +
+        '<li>Trade name: Gudz Group</li>' +
+        '<li>Legal name / company name: <span class="legal-placeholder">[FULL LEGAL NAME OR COMPANY NAME]</span></li>' +
+        '<li>Tax ID (NIF/CIF): <span class="legal-placeholder">[NIF / CIF]</span></li>' +
+        '<li>Registered address: <span class="legal-placeholder">[FULL REGISTERED ADDRESS, MÁLAGA, SPAIN]</span></li>' +
+        '<li>Commercial registry data (if applicable): <span class="legal-placeholder">[MERCANTILE REGISTRY ENTRY]</span></li>' +
+        '<li>Contact email: <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a></li>' +
+        '<li>Contact phone: <a href="tel:+34614191396">+34 614 19 13 96</a></li>' +
+        '</ul>' +
+        '<h3>Purpose of the website</h3>' +
+        '<p>This website provides information about home and office installation, maintenance and cleaning services offered across Málaga, Marbella and the Costa del Sol, and allows visitors to request contact.</p>' +
+        '<h3>Intellectual property</h3>' +
+        '<p>The texts, images and design of this website are the property of Gudz Group or are used under licence, and may not be reproduced without prior authorisation.</p>' +
+        '<h3>Liability</h3>' +
+        '<p>Gudz Group is not responsible for the misuse of the content on this website, which remains the sole responsibility of the person accessing or using it.</p>',
+      es: '<h2>Aviso Legal</h2>' +
+        '<p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilita la siguiente información sobre el titular de este sitio web:</p>' +
+        '<ul>' +
+        '<li>Nombre comercial: Gudz Group</li>' +
+        '<li>Denominación social / titular: <span class="legal-placeholder">[RAZÓN SOCIAL O NOMBRE COMPLETO DEL TITULAR]</span></li>' +
+        '<li>NIF/CIF: <span class="legal-placeholder">[NIF / CIF]</span></li>' +
+        '<li>Domicilio social: <span class="legal-placeholder">[DIRECCIÓN COMPLETA, MÁLAGA, ESPAÑA]</span></li>' +
+        '<li>Datos registrales (si procede): <span class="legal-placeholder">[DATOS DE INSCRIPCIÓN EN EL REGISTRO MERCANTIL]</span></li>' +
+        '<li>Correo de contacto: <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a></li>' +
+        '<li>Teléfono de contacto: <a href="tel:+34614191396">+34 614 19 13 96</a></li>' +
+        '</ul>' +
+        '<h3>Objeto del sitio web</h3>' +
+        '<p>Este sitio web ofrece información sobre servicios de instalación, mantenimiento y limpieza para el hogar y la oficina en Málaga, Marbella y la Costa del Sol, y permite a los visitantes solicitar contacto.</p>' +
+        '<h3>Propiedad intelectual</h3>' +
+        '<p>Los textos, imágenes y el diseño de este sitio web son propiedad de Gudz Group o se utilizan bajo licencia, y no pueden reproducirse sin autorización previa.</p>' +
+        '<h3>Responsabilidad</h3>' +
+        '<p>Gudz Group no se hace responsable del uso indebido de los contenidos de este sitio web, que es responsabilidad exclusiva de quien accede a ellos o los utiliza.</p>'
+    },
+    privacidad: {
+      en: '<h2>Privacy Policy</h2>' +
+        '<p>In accordance with the GDPR (Regulation (EU) 2016/679) and the Spanish LOPDGDD (Organic Law 3/2018), the following information explains how personal data is handled through this website.</p>' +
+        '<h3>Data controller</h3>' +
+        '<p><span class="legal-placeholder">[FULL LEGAL NAME]</span>, NIF <span class="legal-placeholder">[NIF/CIF]</span>, <span class="legal-placeholder">[REGISTERED ADDRESS]</span>. Contact: <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>.</p>' +
+        '<h3>What data we collect</h3>' +
+        '<p>When you contact us by phone or email using the links on this site, we may receive your name, phone number, email address and the content of your message. This site does not currently include a data-collection form; if one is added, this policy will be updated to describe it and the corresponding consent checkbox will be included.</p>' +
+        '<h3>Purpose and legal basis</h3>' +
+        '<p>Data provided by contacting us is used solely to respond to your enquiry and, where applicable, to prepare a quote or deliver a contracted service, based on your consent and/or the steps necessary to enter into a contract.</p>' +
+        '<h3>Data retention</h3>' +
+        '<p>Personal data is kept only for as long as necessary to handle your enquiry or fulfil any resulting contract, and afterwards for the periods required by applicable tax and commercial legislation.</p>' +
+        '<h3>Your rights</h3>' +
+        '<p>You may exercise your rights of access, rectification, erasure, objection, restriction and portability by writing to <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>. You may also lodge a complaint with the Spanish Data Protection Agency (AEPD), <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>' +
+        '<h3>Third parties</h3>' +
+        '<p>This site loads fonts from Google Fonts, which may involve transferring your IP address to Google as described in the Cookie Policy.</p>',
+      es: '<h2>Política de Privacidad</h2>' +
+        '<p>De acuerdo con el RGPD (Reglamento (UE) 2016/679) y la LOPDGDD (Ley Orgánica 3/2018), a continuación se explica cómo se tratan los datos personales a través de este sitio web.</p>' +
+        '<h3>Responsable del tratamiento</h3>' +
+        '<p><span class="legal-placeholder">[NOMBRE O RAZÓN SOCIAL COMPLETA]</span>, NIF <span class="legal-placeholder">[NIF/CIF]</span>, <span class="legal-placeholder">[DOMICILIO SOCIAL]</span>. Contacto: <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>.</p>' +
+        '<h3>Qué datos recogemos</h3>' +
+        '<p>Si nos contacta por teléfono o correo electrónico a través de los enlaces de este sitio, podemos recibir su nombre, teléfono, correo electrónico y el contenido de su mensaje. Este sitio no incluye actualmente ningún formulario de recogida de datos; si se añade uno, esta política se actualizará para describirlo junto con la casilla de consentimiento correspondiente.</p>' +
+        '<h3>Finalidad y base jurídica</h3>' +
+        '<p>Los datos facilitados al contactarnos se utilizan únicamente para responder a su consulta y, en su caso, elaborar un presupuesto o prestar un servicio contratado, sobre la base de su consentimiento y/o las gestiones necesarias para la celebración de un contrato.</p>' +
+        '<h3>Conservación de los datos</h3>' +
+        '<p>Los datos personales se conservan solo durante el tiempo necesario para atender su consulta o cumplir el contrato correspondiente, y posteriormente durante los plazos exigidos por la legislación fiscal y mercantil aplicable.</p>' +
+        '<h3>Sus derechos</h3>' +
+        '<p>Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>. También puede presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD), <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>' +
+        '<h3>Terceros</h3>' +
+        '<p>Este sitio carga tipografías desde Google Fonts, lo que puede implicar la transferencia de su dirección IP a Google, tal como se describe en la Política de Cookies.</p>'
+    },
+    cookies: {
+      en: '<h2>Cookie Policy</h2>' +
+        '<p>This website does not use its own cookies to store personal information, track browsing behaviour, or serve advertising.</p>' +
+        '<h3>Fonts loaded from an external service</h3>' +
+        '<p>This site loads typefaces from Google Fonts (fonts.googleapis.com / fonts.gstatic.com). Loading these fonts requires your browser to connect to Google\'s servers, which involves sharing your IP address with Google. Google acts as an independent data controller for this connection; you can read Google\'s policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>' +
+        '<h3>No consent banner shown</h3>' +
+        '<p>Because this site does not currently set analytics, advertising or profiling cookies, no cookie-consent banner is shown. If tools such as Google Analytics, embedded Google Maps, chat widgets or advertising pixels are added in the future, this policy will be updated and a consent banner allowing users to accept or reject non-essential cookies will be added, as required by the AEPD guidelines and the LSSI-CE.</p>' +
+        '<h3>Managing browser settings</h3>' +
+        '<p>You can allow, block or delete cookies stored by your browser at any time through your browser\'s settings.</p>',
+      es: '<h2>Política de Cookies</h2>' +
+        '<p>Este sitio web no utiliza cookies propias para almacenar información personal, rastrear la navegación ni mostrar publicidad.</p>' +
+        '<h3>Tipografías cargadas desde un servicio externo</h3>' +
+        '<p>Este sitio carga tipografías desde Google Fonts (fonts.googleapis.com / fonts.gstatic.com). Cargar estas fuentes requiere que su navegador se conecte a los servidores de Google, lo que implica compartir su dirección IP con Google. Google actúa como responsable independiente del tratamiento de esta conexión; puede consultar la política de Google en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>' +
+        '<h3>Sin banner de consentimiento</h3>' +
+        '<p>Dado que este sitio no instala actualmente cookies de analítica, publicidad o perfilado, no se muestra ningún banner de consentimiento de cookies. Si en el futuro se incorporan herramientas como Google Analytics, un mapa de Google incrustado, widgets de chat o píxeles publicitarios, esta política se actualizará y se añadirá un banner que permita aceptar o rechazar las cookies no esenciales, conforme a la guía de la AEPD y la LSSI-CE.</p>' +
+        '<h3>Gestión desde el navegador</h3>' +
+        '<p>Puede permitir, bloquear o eliminar las cookies almacenadas por su navegador en cualquier momento desde su configuración.</p>'
+    }
+  };
+
+  var legalModal = document.getElementById('legal-modal');
+  var legalModalBody = document.getElementById('legal-modal-body');
+  var openLegalKey = null;
+
+  function renderLegal(key){
+    legalModalBody.innerHTML = legalTexts[key][currentLang];
+  }
+
+  function openLegal(key){
+    openLegalKey = key;
+    renderLegal(key);
+    legalModal.classList.add('is-open');
+    legalModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLegal(){
+    openLegalKey = null;
+    legalModal.classList.remove('is-open');
+    legalModal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.querySelectorAll('[data-legal]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openLegal(btn.getAttribute('data-legal')); });
+  });
+  document.querySelectorAll('[data-legal-close]').forEach(function(el){
+    el.addEventListener('click', closeLegal);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && legalModal.classList.contains('is-open')){ closeLegal(); }
+  });
+
+  window.addEventListener('load', function(){
+    document.getElementById('hero').classList.add('is-ready');
+  });
+
+})();
+</script>
+
+</body>
+</html>
