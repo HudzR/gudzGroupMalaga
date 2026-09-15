@@ -279,28 +279,36 @@
       --img-work-6: url('images/work-6-mobile.jpg');
       --img-work-7: url('images/work-7-mobile.jpg');
     }
-    /* background-attachment: fixed is unreliable on real iOS Safari
-       (the image can fail to render at all) even though it looks fine
-       in desktop browser emulators. Disabled on mobile — the portrait
-       photos above already fit without needing the fixed trick. */
-    .work-bg-layer{ background-attachment: scroll; }
   }
   #details{
     position: relative;
     isolation: isolate;
     overflow: hidden;
   }
+  /* Outer box spans the FULL (tall, text-driven) height of the section —
+     this is what lets the top/bottom fade below blend smoothly with the
+     hero above and the CTA below, exactly as before. */
   .work-bg{
     position:absolute;
     inset:0;
     z-index:-2;
+  }
+  /* Inner box uses position: sticky (not background-attachment: fixed)
+     to pin the photo to the viewport while the long text scrolls over
+     it. background-attachment: fixed is unreliable on real iOS Safari —
+     it can fail to render at all — while position: sticky is properly
+     and consistently supported on both iOS and Android. */
+  .work-sticky{
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
   }
   .work-bg-layer{
     position:absolute;
     inset:0;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     opacity: 0;
     transition: opacity 1.4s var(--ease);
   }
@@ -312,13 +320,22 @@
   .work-bg-layer[data-work="5"]{ background-image: var(--img-work-5); }
   .work-bg-layer[data-work="6"]{ background-image: var(--img-work-6); }
   .work-bg-layer[data-work="7"]{ background-image: var(--img-work-7); }
-  .work-overlay{
+  /* Constant darkening tint, pinned together with the photo inside
+     .work-sticky (this is what used to be the diagonal part of
+     .work-overlay). */
+  .work-tint{
+    position:absolute;
+    inset:0;
+    background: linear-gradient(100deg, rgba(20,23,28,0.86) 0%, rgba(20,23,28,0.72) 45%, rgba(20,23,28,0.52) 100%);
+  }
+  /* Top/bottom blend into the hero above and the CTA below — spans the
+     full (tall) section, independent of the pinned photo, so the
+     graceful transition looks exactly as it did before. */
+  .work-fade{
     position:absolute;
     inset:0;
     z-index:-1;
-    background:
-      linear-gradient(to bottom, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
-      linear-gradient(100deg, rgba(20,23,28,0.86) 0%, rgba(20,23,28,0.72) 45%, rgba(20,23,28,0.52) 100%);
+    background: linear-gradient(to bottom, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%);
   }
 
   /* ============ CONTENT — single flowing text block, no cards ============ */
@@ -509,15 +526,18 @@
   <!-- ============ CONTENT — flowing text over a real-work photo carousel ============ -->
   <section id="details">
     <div class="work-bg" aria-hidden="true">
-      <div class="work-bg-layer is-active" data-work="1"></div>
-      <div class="work-bg-layer" data-work="2"></div>
-      <div class="work-bg-layer" data-work="3"></div>
-      <div class="work-bg-layer" data-work="4"></div>
-      <div class="work-bg-layer" data-work="5"></div>
-      <div class="work-bg-layer" data-work="6"></div>
-      <div class="work-bg-layer" data-work="7"></div>
+      <div class="work-sticky">
+        <div class="work-bg-layer is-active" data-work="1"></div>
+        <div class="work-bg-layer" data-work="2"></div>
+        <div class="work-bg-layer" data-work="3"></div>
+        <div class="work-bg-layer" data-work="4"></div>
+        <div class="work-bg-layer" data-work="5"></div>
+        <div class="work-bg-layer" data-work="6"></div>
+        <div class="work-bg-layer" data-work="7"></div>
+        <div class="work-tint"></div>
+      </div>
     </div>
-    <div class="work-overlay" aria-hidden="true"></div>
+    <div class="work-fade" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head">
         <h2 data-en="How we approach every installation" data-es="Cómo abordamos cada instalación">How we approach every installation</h2>
