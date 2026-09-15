@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TV Wall Mounting in Málaga, Marbella & Costa del Sol — Gudz Group</title>
+<meta name="description" content="Professional TV wall mounting in Málaga, Marbella and the Costa del Sol — drywall, tile, concrete or brick, matched to your TV and your room. Gudz Group.">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ============ DESIGN TOKENS — kept identical to index.html ============ */
+  :root{
+    --bg: #14171C;
+    --bg-panel: #1E2229;
+    --line: #313742;
+    --line-soft: #22262D;
+    --text: #E2E8F0;
+    --text-dim: #A8B0BC;
+    --text-faint: #6E7683;
+    --accent: #A6C4FF;
+    --accent-strong: #D6E3FF;
+    --accent-deep: #4A6FA8;
+    --accent-warm: #D9886A;
+
+    /* ---- IMAGE PATHS — edit here to swap this page's photo ---- */
+    --img-hero: url('images/tv-hero.jpg');
+
+    --font-serif: 'Bodoni Moda', serif;
+    --font-sans: 'IBM Plex Sans', sans-serif;
+
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 40px;
+    --space-5: 64px;
+    --space-6: 96px;
+    --space-7: 144px;
+
+    --max-w: 1180px;
+
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color: inherit; }
+  ::selection{ background: var(--accent-deep); color: var(--accent-strong); }
+
+  :focus-visible{
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  h1,h2{
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: 0.002em;
+    margin: 0;
+  }
+
+  /* ============ HEADER ============ */
+  /* Overlays the hero photo directly (no hard seam) with a soft gradient
+     fade instead of a flat bar + border. Becomes a solid bar once the
+     page is scrolled past the hero, for legibility over the sections
+     below (see .header.is-scrolled + the scroll listener in JS). */
+  header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: linear-gradient(to bottom, rgba(20,23,28,0.55) 0%, rgba(20,23,28,0.28) 60%, transparent 100%);
+    transition: background .35s var(--ease), backdrop-filter .35s var(--ease), border-color .35s var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+  header.is-scrolled{
+    background: rgba(20,23,28,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+  .logo{
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo span{ color: var(--accent); }
+
+  nav.primary-nav{
+    display:flex;
+    align-items:center;
+    gap: var(--space-4);
+  }
+  nav.primary-nav a.nav-link{
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    text-decoration:none;
+    transition: color .25s var(--ease);
+  }
+  nav.primary-nav a.nav-link:hover{ color: var(--text); }
+
+  .lang-toggle{
+    display:flex;
+    align-items:center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 6px;
+  }
+  .lang-toggle button{
+    background:none;
+    border:none;
+    color: var(--text-faint);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    cursor:pointer;
+    transition: color .2s var(--ease), background .2s var(--ease);
+  }
+  .lang-toggle button.is-active{
+    color: var(--bg);
+    background: var(--accent);
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    position: relative;
+    padding-top: clamp(var(--space-6), 12vw, var(--space-7));
+    padding-bottom: clamp(var(--space-6), 10vw, var(--space-7));
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(ellipse 70% 60% at 78% 20%, rgba(166,196,255,0.12), transparent 60%),
+      var(--img-hero);
+    background-size: cover;
+    background-position: center 55%;
+  }
+  /* Fades to the flat --bg color at the bottom, so the next (photo-less)
+     section begins seamlessly — same treatment as the homepage. */
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+      linear-gradient(to bottom, transparent 75%, var(--bg) 100%),
+      linear-gradient(100deg, rgba(20,23,28,0.80) 0%, rgba(20,23,28,0.60) 45%, rgba(20,23,28,0.30) 100%);
+  }
+
+  .hero-content{
+    position: relative;
+    max-width: 760px;
+  }
+  .hero-eyebrow{
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    margin-bottom: var(--space-3);
+    font-weight: 400;
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.12;
+    color: var(--accent-strong);
+    opacity:0;
+  }
+  .hero h1 .reveal-line{
+    display:block;
+    overflow:hidden;
+  }
+  .hero h1 .reveal-line span{
+    display:block;
+    transform: translateY(110%);
+    animation: rise .9s var(--ease) forwards;
+  }
+  .hero.is-ready h1{ opacity:1; }
+  .hero.is-ready h1 .reveal-line:nth-child(1) span{ animation-delay: .15s; }
+  .hero.is-ready h1 .reveal-line:nth-child(2) span{ animation-delay: .28s; }
+  @keyframes rise{ to{ transform: translateY(0); } }
+
+  .hero-sub{
+    margin-top: var(--space-4);
+    max-width: 520px;
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    text-decoration:none;
+    padding: 14px 28px;
+    border: 1px solid var(--accent);
+    color: var(--accent-strong);
+    border-radius: 2px;
+    background: transparent;
+    transition: background .3s var(--ease), color .3s var(--ease);
+  }
+  .btn:hover{
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ============ CONTENT — flowing text over a real-work photo carousel ============ */
+  /* Same crossfade technique as the homepage services section, but the
+     photos advance automatically on a timer instead of via tabs.
+     Drop real completed-job photos into /images and list their paths
+     in the --img-work-* variables below (add more slots if needed). */
+  :root{
+    --img-work-1: url('images/work-1.jpg');
+    --img-work-2: url('images/work-2.jpg');
+    --img-work-3: url('images/work-3.jpg');
+    --img-work-4: url('images/work-4.jpg');
+    --img-work-5: url('images/work-5.jpg');
+    --img-work-6: url('images/work-6.jpg');
+    --img-work-7: url('images/work-7.jpg');
+  }
+
+  /* ---- MOBILE PHOTOS ----
+     Below 768px, swap every background photo (hero + work carousel) for
+     a portrait-cropped version where the TV stays centered — the
+     landscape 16:9 originals zoom in far too aggressively on narrow,
+     tall mobile layouts. Files live in the same /images folder,
+     suffixed "-mobile". */
+  @media (max-width: 768px){
+    :root{
+      --img-hero: url('images/tv-hero-mobile.jpg');
+      --img-work-1: url('images/work-1-mobile.jpg');
+      --img-work-2: url('images/work-2-mobile.jpg');
+      --img-work-3: url('images/work-3-mobile.jpg');
+      --img-work-4: url('images/work-4-mobile.jpg');
+      --img-work-5: url('images/work-5-mobile.jpg');
+      --img-work-6: url('images/work-6-mobile.jpg');
+      --img-work-7: url('images/work-7-mobile.jpg');
+    }
+  }
+  #details{
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .work-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+  }
+  .work-bg-layer{
+    position:absolute;
+    inset:0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0;
+    transition: opacity 1.4s var(--ease);
+  }
+  .work-bg-layer.is-active{ opacity: 1; }
+  .work-bg-layer[data-work="1"]{ background-image: var(--img-work-1); }
+  .work-bg-layer[data-work="2"]{ background-image: var(--img-work-2); }
+  .work-bg-layer[data-work="3"]{ background-image: var(--img-work-3); }
+  .work-bg-layer[data-work="4"]{ background-image: var(--img-work-4); }
+  .work-bg-layer[data-work="5"]{ background-image: var(--img-work-5); }
+  .work-bg-layer[data-work="6"]{ background-image: var(--img-work-6); }
+  .work-bg-layer[data-work="7"]{ background-image: var(--img-work-7); }
+  .work-overlay{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+      linear-gradient(to bottom, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
+      linear-gradient(100deg, rgba(20,23,28,0.86) 0%, rgba(20,23,28,0.72) 45%, rgba(20,23,28,0.52) 100%);
+  }
+
+  /* ============ CONTENT — single flowing text block, no cards ============ */
+  section{ padding-top: var(--space-6); padding-bottom: var(--space-6); }
+  .section-head{
+    margin-bottom: var(--space-5);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: var(--space-4);
+  }
+  .section-head h2{
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--accent-strong);
+  }
+
+  .prose{
+    max-width: 70ch;
+  }
+  .prose p{
+    font-size: 1.03rem;
+    line-height: 1.75;
+    color: var(--text);
+    margin: 0 0 var(--space-4) 0;
+  }
+  .prose p:last-child{ margin-bottom: 0; }
+  .prose .kw{ color: var(--text); }
+
+  /* ============ CTA (bottom) ============ */
+  #cta{
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  #cta h2{
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    color: var(--accent-strong);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  #cta p{
+    margin: var(--space-3) auto 0;
+    max-width: 480px;
+    color: var(--text-dim);
+    font-size: 1rem;
+  }
+  #cta .btn{ margin-top: var(--space-4); }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top: 1px solid var(--line-soft);
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+  .footer-inner{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+  }
+  .footer-inner a{ color: var(--text-faint); text-decoration:none; }
+  .footer-inner a:hover{ color: var(--text-dim); }
+
+  .footer-legal{
+    display:flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  .footer-legal button{
+    background:none;
+    border:none;
+    padding:0;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor:pointer;
+    transition: color .2s var(--ease);
+  }
+  .footer-legal button:hover{ color: var(--text-dim); }
+
+  /* ============ LEGAL MODAL ============ */
+  .legal-modal{
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding: var(--space-3);
+  }
+  .legal-modal.is-open{ display:flex; }
+  .legal-modal-backdrop{
+    position:absolute;
+    inset:0;
+    background: rgba(10,12,15,0.72);
+    backdrop-filter: blur(4px);
+  }
+  .legal-modal-panel{
+    position:relative;
+    z-index:1;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    max-width: 720px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: var(--space-4);
+  }
+  .legal-modal-panel h2{
+    font-size: 1.3rem;
+    color: var(--accent-strong);
+    margin-bottom: var(--space-3);
+    padding-right: var(--space-5);
+  }
+  .legal-modal-panel h3{
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text);
+    margin: var(--space-3) 0 var(--space-1);
+  }
+  .legal-modal-panel p, .legal-modal-panel li{
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+  .legal-modal-panel ul{ padding-left: 1.1em; margin: 0 0 var(--space-2); }
+  .legal-modal-panel .legal-placeholder{
+    color: var(--accent-warm);
+  }
+  .legal-modal-close{
+    position:absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    background:none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    width: 32px;
+    height: 32px;
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1;
+    cursor:pointer;
+    transition: color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .legal-modal-close:hover{ color: var(--text); border-color: var(--accent); }
+
+  @media (max-width: 720px){
+    .header-inner{ flex-wrap: wrap; gap: var(--space-2); }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">GUDZ <span>GROUP</span></a>
+    <nav class="primary-nav">
+      <a class="nav-link" href="index.html" data-en="Home" data-es="Inicio">Home</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" class="is-active">EN</button>
+        <button type="button" data-set-lang="es">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="wrap hero-content">
+      <p class="hero-eyebrow" data-en="Málaga · Marbella · Costa del Sol" data-es="Málaga · Marbella · Costa del Sol">Málaga · Marbella · Costa del Sol</p>
+      <h1>
+        <span class="reveal-line"><span data-en="Professional TV wall mounting" data-es="Instalación profesional de TV en pared">Professional TV wall mounting</span></span>
+        <span class="reveal-line"><span data-en="in Málaga, Marbella & Costa del Sol." data-es="en Málaga, Marbella y Costa del Sol.">in Málaga, Marbella & Costa del Sol.</span></span>
+      </h1>
+      <p class="hero-sub" data-en="Secure installation on drywall, tile, concrete or brick — matched to your wall, your TV, and your room." data-es="Montaje seguro en pladur, azulejo, hormigón o ladrillo — adaptado a tu pared, tu televisor y tu espacio.">
+        Secure installation on drywall, tile, concrete or brick — matched to your wall, your TV, and your room.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CONTENT — flowing text over a real-work photo carousel ============ -->
+  <section id="details">
+    <div class="work-bg" aria-hidden="true">
+      <div class="work-bg-layer is-active" data-work="1"></div>
+      <div class="work-bg-layer" data-work="2"></div>
+      <div class="work-bg-layer" data-work="3"></div>
+      <div class="work-bg-layer" data-work="4"></div>
+      <div class="work-bg-layer" data-work="5"></div>
+      <div class="work-bg-layer" data-work="6"></div>
+      <div class="work-bg-layer" data-work="7"></div>
+    </div>
+    <div class="work-overlay" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-en="How we approach every installation" data-es="Cómo abordamos cada instalación">How we approach every installation</h2>
+      </div>
+      <div class="prose">
+        <p class="i18n-en" data-en-block="true">
+          The wall type determines the mounting method. On drywall, we anchor into the studs behind the panel rather than the drywall itself. On tile, precise drilling avoids cracking the ceramic, reaching the studs behind it whenever possible. Concrete is the strongest base of all, done right with the correct tools and anchors. Brick needs anchors matched to its specific masonry. Wall type is one of the main factors behind the final price, along with TV size and mount choice.
+        </p>
+        <p class="i18n-es" data-en-block="true" style="display:none;">
+          El tipo de pared determina el método de montaje. En pladur, anclamos a los montantes detrás del panel, no al pladur en sí. En azulejo, la perforación precisa evita agrietar la cerámica, llegando a los montantes detrás siempre que sea posible. El hormigón es la base más resistente, bien hecho con las herramientas y anclajes correctos. El ladrillo necesita anclajes según su tipo de fábrica. El tipo de pared es uno de los factores principales del precio final, junto con el tamaño del televisor y el soporte elegido.
+        </p>
+
+        <p class="i18n-en" data-en-block="true">
+          The right mount depends on your wall and your setup. A slim, low-profile mount sits almost flush against the wall — usually included with Frame TVs. A fixed mount is stable and permanent, right if you always watch from the same spot. A tilting mount angles the screen down, useful above eye level. A full-motion mount extends and swivels for different viewing angles — but being heavier, it's best anchored into concrete or brick rather than drywall alone, especially with the metal studs common in Spanish construction. For a TV mounted high, like above a fireplace, a pull-down mount brings it to eye level on demand.
+        </p>
+        <p class="i18n-es" data-en-block="true" style="display:none;">
+          El soporte adecuado depende de tu pared y tu instalación. Un soporte fino de bajo perfil queda casi pegado a la pared — suele venir incluido con televisores Frame TV. Un soporte fijo es estable y permanente, correcto si siempre se ve desde el mismo punto. Un soporte inclinable angula la pantalla hacia abajo, útil por encima de la altura de los ojos. Un soporte de movimiento completo se extiende y gira para distintos ángulos — pero al ser más pesado, funciona mejor anclado a hormigón o ladrillo que solo a pladur, especialmente con los montantes metálicos habituales en la construcción española. Para un televisor montado en alto, como sobre una chimenea, un soporte abatible lo baja a la altura de los ojos cuando se necesita.
+        </p>
+
+        <p class="i18n-en" data-en-block="true">
+          Beyond the mount, we also offer soundbar and speaker mounting, gaming console mounting, floating shelf or mantel installation, and <span class="kw">decorative wall panelling</span> — such as 3D acoustic MDF panels — worth planning together with the main installation.
+        </p>
+        <p class="i18n-es" data-en-block="true" style="display:none;">
+          Además del soporte, también ofrecemos montaje de barra de sonido y altavoces, montaje de consola de videojuegos, instalación de balda flotante o repisa, y <span class="kw">revestimiento decorativo de pared</span> — como paneles acústicos de MDF con efecto 3D — fácil de planificar junto con la instalación principal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section id="cta">
+    <div class="wrap">
+      <h2 data-en="Not sure what your wall needs?" data-es="¿No sabes qué necesita tu pared?">Not sure what your wall needs?</h2>
+      <p data-en="Tell us your wall type, TV size, and where it's going — we'll quote it properly the first time." data-es="Cuéntanos el tipo de pared, el tamaño del televisor y dónde va — te daremos un presupuesto correcto desde el principio.">
+        Tell us your wall type, TV size, and where it's going — we'll quote it properly the first time.
+      </p>
+      <a class="btn" href="https://wa.me/34614191396" target="_blank" rel="noopener" data-en="Get a Free Quote" data-es="Solicitar Presupuesto Gratis">Get a Free Quote</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span data-en="© 2026 Gudz Group. Málaga, Spain." data-es="© 2026 Gudz Group. Málaga, España.">© 2026 Gudz Group. Málaga, Spain.</span>
+    <nav class="footer-legal">
+      <button type="button" data-legal="aviso" data-en="Legal Notice" data-es="Aviso legal">Legal Notice</button>
+      <button type="button" data-legal="privacidad" data-en="Privacy Policy" data-es="Política de privacidad">Privacy Policy</button>
+      <button type="button" data-legal="cookies" data-en="Cookie Policy" data-es="Política de cookies">Cookie Policy</button>
+    </nav>
+    <a href="tel:+34614191396">+34 614 19 13 96</a>
+  </div>
+</footer>
+
+<div class="legal-modal" id="legal-modal" aria-hidden="true">
+  <div class="legal-modal-backdrop" data-legal-close></div>
+  <div class="legal-modal-panel" role="dialog" aria-modal="true">
+    <button type="button" class="legal-modal-close" data-legal-close aria-label="Close">✕</button>
+    <div id="legal-modal-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+
+  /* ---------- HEADER — solid background once scrolled past the hero ---------- */
+  var headerEl = document.querySelector('header');
+  function updateHeaderState(){
+    headerEl.classList.toggle('is-scrolled', window.scrollY > 80);
+  }
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+  updateHeaderState();
+
+  /* ---------- WORK PHOTO CAROUSEL — auto-advances behind the text ---------- */
+  var workLayers = document.querySelectorAll('.work-bg-layer');
+  if(workLayers.length > 1){
+    var workIndex = 0;
+    setInterval(function(){
+      workLayers[workIndex].classList.remove('is-active');
+      workIndex = (workIndex + 1) % workLayers.length;
+      workLayers[workIndex].classList.add('is-active');
+    }, 5000);
+  }
+
+  var buttons = document.querySelectorAll('[data-set-lang]');
+  var currentLang = 'en';
+
+  function setLang(lang){
+    currentLang = lang;
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var val = el.getAttribute('data-' + lang);
+      if(val !== null){ el.textContent = val; }
+    });
+
+    document.querySelectorAll('.i18n-en').forEach(function(el){
+      el.style.display = (lang === 'en') ? '' : 'none';
+    });
+    document.querySelectorAll('.i18n-es').forEach(function(el){
+      el.style.display = (lang === 'es') ? '' : 'none';
+    });
+
+    buttons.forEach(function(b){
+      b.classList.toggle('is-active', b.getAttribute('data-set-lang') === lang);
+    });
+
+    document.title = lang === 'es'
+      ? 'Instalación Profesional de TV en Málaga, Marbella y Costa del Sol — Gudz Group'
+      : 'TV Wall Mounting in Málaga, Marbella & Costa del Sol — Gudz Group';
+
+    if(openLegalKey){ renderLegal(openLegalKey); }
+  }
+
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-set-lang')); });
+  });
+
+  /* ---------- LEGAL TEXTS — identical to index.html, kept in sync ---------- */
+  var legalTexts = {
+    aviso: {
+      en: '<h2>Legal Notice</h2>' +
+        '<p>In compliance with Article 10 of Spanish Law 34/2002 (LSSI-CE), the following information is provided about the owner of this website:</p>' +
+        '<ul>' +
+        '<li>Trade name: Gudz Group</li>' +
+        '<li>Legal name / company name: <span class="legal-placeholder">[FULL LEGAL NAME OR COMPANY NAME]</span></li>' +
+        '<li>Tax ID (NIF/CIF): <span class="legal-placeholder">[NIF / CIF]</span></li>' +
+        '<li>Registered address: <span class="legal-placeholder">[FULL REGISTERED ADDRESS, MÁLAGA, SPAIN]</span></li>' +
+        '<li>Commercial registry data (if applicable): <span class="legal-placeholder">[MERCANTILE REGISTRY ENTRY]</span></li>' +
+        '<li>Contact email: <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a></li>' +
+        '<li>Contact phone: <a href="tel:+34614191396">+34 614 19 13 96</a></li>' +
+        '</ul>' +
+        '<h3>Purpose of the website</h3>' +
+        '<p>This website provides information about home and office installation, maintenance and cleaning services offered across Málaga, Marbella and the Costa del Sol, and allows visitors to request contact.</p>' +
+        '<h3>Intellectual property</h3>' +
+        '<p>The texts, images and design of this website are the property of Gudz Group or are used under licence, and may not be reproduced without prior authorisation.</p>' +
+        '<h3>Liability</h3>' +
+        '<p>Gudz Group is not responsible for the misuse of the content on this website, which remains the sole responsibility of the person accessing or using it.</p>',
+      es: '<h2>Aviso Legal</h2>' +
+        '<p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilita la siguiente información sobre el titular de este sitio web:</p>' +
+        '<ul>' +
+        '<li>Nombre comercial: Gudz Group</li>' +
+        '<li>Denominación social / titular: <span class="legal-placeholder">[RAZÓN SOCIAL O NOMBRE COMPLETO DEL TITULAR]</span></li>' +
+        '<li>NIF/CIF: <span class="legal-placeholder">[NIF / CIF]</span></li>' +
+        '<li>Domicilio social: <span class="legal-placeholder">[DIRECCIÓN COMPLETA, MÁLAGA, ESPAÑA]</span></li>' +
+        '<li>Datos registrales (si procede): <span class="legal-placeholder">[DATOS DE INSCRIPCIÓN EN EL REGISTRO MERCANTIL]</span></li>' +
+        '<li>Correo de contacto: <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a></li>' +
+        '<li>Teléfono de contacto: <a href="tel:+34614191396">+34 614 19 13 96</a></li>' +
+        '</ul>' +
+        '<h3>Objeto del sitio web</h3>' +
+        '<p>Este sitio web ofrece información sobre servicios de instalación, mantenimiento y limpieza para el hogar y la oficina en Málaga, Marbella y la Costa del Sol, y permite a los visitantes solicitar contacto.</p>' +
+        '<h3>Propiedad intelectual</h3>' +
+        '<p>Los textos, imágenes y el diseño de este sitio web son propiedad de Gudz Group o se utilizan bajo licencia, y no pueden reproducirse sin autorización previa.</p>' +
+        '<h3>Responsabilidad</h3>' +
+        '<p>Gudz Group no se hace responsable del uso indebido de los contenidos de este sitio web, que es responsabilidad exclusiva de quien accede a ellos o los utiliza.</p>'
+    },
+    privacidad: {
+      en: '<h2>Privacy Policy</h2>' +
+        '<p>In accordance with the GDPR (Regulation (EU) 2016/679) and the Spanish LOPDGDD (Organic Law 3/2018), the following information explains how personal data is handled through this website.</p>' +
+        '<h3>Data controller</h3>' +
+        '<p><span class="legal-placeholder">[FULL LEGAL NAME]</span>, NIF <span class="legal-placeholder">[NIF/CIF]</span>, <span class="legal-placeholder">[REGISTERED ADDRESS]</span>. Contact: <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>.</p>' +
+        '<h3>What data we collect</h3>' +
+        '<p>When you contact us by phone or email using the links on this site, we may receive your name, phone number, email address and the content of your message. This site does not currently include a data-collection form; if one is added, this policy will be updated to describe it and the corresponding consent checkbox will be included.</p>' +
+        '<h3>Purpose and legal basis</h3>' +
+        '<p>Data provided by contacting us is used solely to respond to your enquiry and, where applicable, to prepare a quote or deliver a contracted service, based on your consent and/or the steps necessary to enter into a contract.</p>' +
+        '<h3>Data retention</h3>' +
+        '<p>Personal data is kept only for as long as necessary to handle your enquiry or fulfil any resulting contract, and afterwards for the periods required by applicable tax and commercial legislation.</p>' +
+        '<h3>Your rights</h3>' +
+        '<p>You may exercise your rights of access, rectification, erasure, objection, restriction and portability by writing to <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>. You may also lodge a complaint with the Spanish Data Protection Agency (AEPD), <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>' +
+        '<h3>Third parties</h3>' +
+        '<p>This site loads fonts from Google Fonts, which may involve transferring your IP address to Google as described in the Cookie Policy.</p>',
+      es: '<h2>Política de Privacidad</h2>' +
+        '<p>De acuerdo con el RGPD (Reglamento (UE) 2016/679) y la LOPDGDD (Ley Orgánica 3/2018), a continuación se explica cómo se tratan los datos personales a través de este sitio web.</p>' +
+        '<h3>Responsable del tratamiento</h3>' +
+        '<p><span class="legal-placeholder">[NOMBRE O RAZÓN SOCIAL COMPLETA]</span>, NIF <span class="legal-placeholder">[NIF/CIF]</span>, <span class="legal-placeholder">[DOMICILIO SOCIAL]</span>. Contacto: <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>.</p>' +
+        '<h3>Qué datos recogemos</h3>' +
+        '<p>Si nos contacta por teléfono o correo electrónico a través de los enlaces de este sitio, podemos recibir su nombre, teléfono, correo electrónico y el contenido de su mensaje. Este sitio no incluye actualmente ningún formulario de recogida de datos; si se añade uno, esta política se actualizará para describirlo junto con la casilla de consentimiento correspondiente.</p>' +
+        '<h3>Finalidad y base jurídica</h3>' +
+        '<p>Los datos facilitados al contactarnos se utilizan únicamente para responder a su consulta y, en su caso, elaborar un presupuesto o prestar un servicio contratado, sobre la base de su consentimiento y/o las gestiones necesarias para la celebración de un contrato.</p>' +
+        '<h3>Conservación de los datos</h3>' +
+        '<p>Los datos personales se conservan solo durante el tiempo necesario para atender su consulta o cumplir el contrato correspondiente, y posteriormente durante los plazos exigidos por la legislación fiscal y mercantil aplicable.</p>' +
+        '<h3>Sus derechos</h3>' +
+        '<p>Puede ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <a href="mailto:gudzgroup@gmail.com">gudzgroup@gmail.com</a>. También puede presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD), <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>' +
+        '<h3>Terceros</h3>' +
+        '<p>Este sitio carga tipografías desde Google Fonts, lo que puede implicar la transferencia de su dirección IP a Google, tal como se describe en la Política de Cookies.</p>'
+    },
+    cookies: {
+      en: '<h2>Cookie Policy</h2>' +
+        '<p>This website does not use its own cookies to store personal information, track browsing behaviour, or serve advertising.</p>' +
+        '<h3>Fonts loaded from an external service</h3>' +
+        '<p>This site loads typefaces from Google Fonts (fonts.googleapis.com / fonts.gstatic.com). Loading these fonts requires your browser to connect to Google\'s servers, which involves sharing your IP address with Google. Google acts as an independent data controller for this connection; you can read Google\'s policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>' +
+        '<h3>No consent banner shown</h3>' +
+        '<p>Because this site does not currently set analytics, advertising or profiling cookies, no cookie-consent banner is shown. If tools such as Google Analytics, embedded Google Maps, chat widgets or advertising pixels are added in the future, this policy will be updated and a consent banner allowing users to accept or reject non-essential cookies will be added, as required by the AEPD guidelines and the LSSI-CE.</p>' +
+        '<h3>Managing browser settings</h3>' +
+        '<p>You can allow, block or delete cookies stored by your browser at any time through your browser\'s settings.</p>',
+      es: '<h2>Política de Cookies</h2>' +
+        '<p>Este sitio web no utiliza cookies propias para almacenar información personal, rastrear la navegación ni mostrar publicidad.</p>' +
+        '<h3>Tipografías cargadas desde un servicio externo</h3>' +
+        '<p>Este sitio carga tipografías desde Google Fonts (fonts.googleapis.com / fonts.gstatic.com). Cargar estas fuentes requiere que su navegador se conecte a los servidores de Google, lo que implica compartir su dirección IP con Google. Google actúa como responsable independiente del tratamiento de esta conexión; puede consultar la política de Google en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>' +
+        '<h3>Sin banner de consentimiento</h3>' +
+        '<p>Dado que este sitio no instala actualmente cookies de analítica, publicidad o perfilado, no se muestra ningún banner de consentimiento de cookies. Si en el futuro se incorporan herramientas como Google Analytics, un mapa de Google incrustado, widgets de chat o píxeles publicitarios, esta política se actualizará y se añadirá un banner que permita aceptar o rechazar las cookies no esenciales, conforme a la guía de la AEPD y la LSSI-CE.</p>' +
+        '<h3>Gestión desde el navegador</h3>' +
+        '<p>Puede permitir, bloquear o eliminar las cookies almacenadas por su navegador en cualquier momento desde su configuración.</p>'
+    }
+  };
+
+  var legalModal = document.getElementById('legal-modal');
+  var legalModalBody = document.getElementById('legal-modal-body');
+  var openLegalKey = null;
+
+  function renderLegal(key){
+    legalModalBody.innerHTML = legalTexts[key][currentLang];
+  }
+
+  function openLegal(key){
+    openLegalKey = key;
+    renderLegal(key);
+    legalModal.classList.add('is-open');
+    legalModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLegal(){
+    openLegalKey = null;
+    legalModal.classList.remove('is-open');
+    legalModal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.querySelectorAll('[data-legal]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openLegal(btn.getAttribute('data-legal')); });
+  });
+  document.querySelectorAll('[data-legal-close]').forEach(function(el){
+    el.addEventListener('click', closeLegal);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && legalModal.classList.contains('is-open')){ closeLegal(); }
+  });
+
+  window.addEventListener('load', function(){
+    document.getElementById('hero').classList.add('is-ready');
+  });
+
+})();
+</script>
+
+</body>
+</html>

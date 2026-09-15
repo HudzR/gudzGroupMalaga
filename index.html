@@ -55,6 +55,22 @@
     --ease: cubic-bezier(.22,.61,.36,1);
   }
 
+  /* ---- MOBILE PHOTOS ----
+     Below 768px, swap every background photo for a portrait-cropped
+     version — the landscape 16:9 originals zoom in far too
+     aggressively on narrow, tall mobile layouts. Files live in the
+     same /images folder, suffixed "-mobile". */
+  @media (max-width: 768px){
+    :root{
+      --img-hero:     url('images/hero-kitchen-mobile.jpg');
+      --img-install:  url('images/services-bg-install-mobile.jpg');
+      --img-climate:  url('images/services-bg-climate-mobile.jpg');
+      --img-cleaning: url('images/services-bg-cleaning-mobile.jpg');
+      --img-security: url('images/services-bg-security-mobile.jpg');
+      --img-contact:  url('images/contact-bg-mobile.jpg');
+    }
+  }
+
   *{ box-sizing: border-box; }
   html{ scroll-behavior: smooth; }
   body{
@@ -425,6 +441,22 @@
     margin: 0;
     line-height: 1.4;
   }
+  .service-title a{
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    transition: color .25s var(--ease);
+  }
+  .service-title a:hover{ color: var(--accent); }
+  .service-title a .arrow{
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    opacity: 0.6;
+    transition: transform .25s var(--ease), opacity .25s var(--ease);
+  }
+  .service-title a:hover .arrow{ transform: translateX(3px); opacity: 1; }
   .service-desc{
     margin: 0;
     color: var(--text-dim);
@@ -789,7 +821,8 @@
           descEs:'Instalación completa de cocinas: armarios, encimeras y acabados, con un resultado preciso y duradero.' },
         { titleEn:"TV wall mounting", titleEs:"Instalación de televisores",
           descEn:'Secure TV wall mounting with hidden cabling, for any wall and any screen size.',
-          descEs:'Instalación de televisores en pared con cableado oculto, en cualquier tipo de pared.' },
+          descEs:'Instalación de televisores en pared con cableado oculto, en cualquier tipo de pared.',
+          href:'tv-installation.html' },
         { titleEn:"Furniture assembly", titleEs:"Montaje de muebles",
           descEn:'Careful furniture assembly and installation — flat-pack, freestanding or built-in.',
           descEs:'Montaje de muebles con cuidado: kits planos, piezas independientes o a medida.' },
@@ -871,8 +904,11 @@
     cat.items.forEach(function(s){
       var row = document.createElement('div');
       row.className = 'service-row';
+      var titleHtml = s.href
+        ? '<a href="' + s.href + '"><span data-en="' + s.titleEn + '" data-es="' + s.titleEs + '">' + s.titleEn + '</span><span class="arrow">→</span></a>'
+        : '<span data-en="' + s.titleEn + '" data-es="' + s.titleEs + '">' + s.titleEn + '</span>';
       row.innerHTML =
-        '<h3 class="service-title" data-en="' + s.titleEn + '" data-es="' + s.titleEs + '">' + s.titleEn + '</h3>' +
+        '<h3 class="service-title">' + titleHtml + '</h3>' +
         '<p class="service-desc" data-en="' + s.descEn + '" data-es="' + s.descEs + '">' + s.descEn + '</p>';
       panel.appendChild(row);
     });
