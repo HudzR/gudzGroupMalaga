@@ -279,6 +279,11 @@
       --img-work-6: url('images/work-6-mobile.jpg');
       --img-work-7: url('images/work-7-mobile.jpg');
     }
+    /* background-attachment: fixed is unreliable on real iOS Safari
+       (the image can fail to render at all) even though it looks fine
+       in desktop browser emulators. Disabled on mobile — the portrait
+       photos above already fit without needing the fixed trick. */
+    .work-bg-layer{ background-attachment: scroll; }
   }
   #details{
     position: relative;
