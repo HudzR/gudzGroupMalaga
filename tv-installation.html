@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TV Wall Mounting in Málaga, Marbella & Costa del Sol — Gudz Group</title>
 <meta name="description" content="Professional TV wall mounting in Málaga, Marbella and the Costa del Sol — drywall, tile, concrete or brick, matched to your TV and your room. Gudz Group.">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2065523491017700');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2065523491017700&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <link rel="icon" href="images/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
@@ -774,6 +791,20 @@
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && legalModal.classList.contains('is-open')){ closeLegal(); }
   });
+
+  /* ---------- META PIXEL — track WhatsApp and phone clicks ---------- */
+  if (typeof fbq === 'function') {
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(el){
+      el.addEventListener('click', function(){
+        fbq('track', 'Contact', { content_name: 'WhatsApp' });
+      });
+    });
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+      el.addEventListener('click', function(){
+        fbq('track', 'Contact', { content_name: 'Phone' });
+      });
+    });
+  }
 
   window.addEventListener('load', function(){
     document.getElementById('hero').classList.add('is-ready');
