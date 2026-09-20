@@ -279,6 +279,20 @@
       --img-work-6: url('images/furniture-work-6-mobile.jpg');
       --img-work-7: url('images/furniture-work-7-mobile.jpg');
     }
+    /* Since splitting the text into shorter tabs, the active panel is
+       much shorter than before — on mobile, where the viewport is a
+       large share of the total section height, that squeezed the
+       percentage-based top/bottom fade into too short a span and made
+       the transition into/out of this section look abrupt. Forcing a
+       minimum height (with the content centered inside it) gives the
+       fade room to breathe again, and shows more of the pinned photo
+       as a bonus. */
+    #details{
+      min-height: 150vh;
+      display: flex;
+      align-items: center;
+    }
+    #details > .wrap{ width: 100%; }
   }
   #details{
     position: relative;
